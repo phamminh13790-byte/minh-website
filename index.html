@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday Em Bé Của Anh 💖</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        /* background-image: url("https://i.postimg.cc/Pr60jm51/a325f436-2664-4b69-97cd-b9405d0ab632.jpg"); đổi ảnh nền ở đây */
+        /* background-size: cover; */
+        /* background-position: center; */
+        background-color: #f8d7e3;
+        color: white;
+        font-family: "Courier New", monospace;
+        text-align: center;
+        padding-top: 150px;
+        font-size: 22px;
+        text-shadow: 2px 2px 8px #000;
+      }
+
+      h1 {
+        font-size: 36px;
+        color: black;
+        text-shadow: 0 0 20px pink;
+      }
+
+      #message {
+        white-space: pre-line;
+        display: inline-block;
+        background: rgba(0, 0, 0, 0.4);
+        padding: 20px;
+        border-radius: 10px;
+        z-index: 2;
+        position: relative;
+      }
+
+      /* 💖 Tim bay */
+      .heart {
+        position: fixed;
+        bottom: 0;
+        font-size: 22px;
+        animation: rise 5s linear forwards;
+        z-index: 1;
+      }
+      @keyframes rise {
+        0% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100vh);
+          opacity: 0;
+        }
+      }
+
+      /* 🎈 Bóng bay */
+      .balloon {
+        position: absolute;
+        bottom: -150px;
+        font-size: 36px;
+        animation: floatUp 8s ease-in infinite;
+      }
+      @keyframes floatUp {
+        0% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-120vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+      /* thưu */
+
+      /* 🎆 Pháo hoa */
+      .spark {
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        background: yellow;
+        border-radius: 50%;
+        animation: explode 1.2s ease-out forwards;
+      }
+      @keyframes explode {
+        0% {
+          transform: scale(0.5);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(3);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🎂 Happy Birthday Em Bé Tít Của Anh 🎉</h1>
+    <div id="message"></div>
+
+    <!-- 🎵 Nhạc nền -->
+    <audio autoplay loop>
+      <source
+        src="https://cdn.pixabay.com/audio/2023/05/24/audio_1e9c8c9d2e.mp3"
+        type="audio/mpeg"
+      />
+    </audio>
+
+    <script>
+      // 💬 Hiệu ứng chữ chạy
+      const text = `
+Chúc em bé sinh nhật thật vui vẻ, hạnh phúc 💖
+Cảm ơn em vì đã ở bên anh, em món quà quý giá nhất cuộc đời 🌸
+Mong em luôn cười thật tươi, vì nụ cười ấy làm tim anh tan chảy 😳
+Mãi bên nhau nhé 💑
+
+— From Anh Bé Hĩn Của Em 💌
+(Mới học nên làm hơi xấu thông cảm!!!)
+    `;
+      let i = 0;
+      function type() {
+        if (i < text.length) {
+          document.getElementById("message").textContent += text.charAt(i);
+          i++;
+          setTimeout(type, 80);
+        }
+      }
+      type();
+
+      // 💖 Tim bay
+      const body = document.querySelector("body");
+      setInterval(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+        heart.innerText = "💖";
+        body.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+      }, 500);
+
+      // 🎈 Bóng bay bay lên
+      const colors = ["🎈", "🎉", "🎊", "💗"];
+      setInterval(() => {
+        const balloon = document.createElement("div");
+        balloon.classList.add("balloon");
+        balloon.style.left = Math.random() * 100 + "vw";
+        balloon.style.animationDuration = Math.random() * 4 + 6 + "s";
+        balloon.innerText = colors[Math.floor(Math.random() * colors.length)];
+        document.body.appendChild(balloon);
+        setTimeout(() => balloon.remove(), 8000);
+      }, 800);
+
+      // 🎆 Pháo hoa
+      function createSpark() {
+        const spark = document.createElement("div");
+        spark.classList.add("spark");
+        spark.style.left = Math.random() * 100 + "vw";
+        spark.style.top = Math.random() * 50 + "vh";
+        spark.style.backgroundColor = ["yellow", "pink", "aqua", "white"][
+          Math.floor(Math.random() * 4)
+        ];
+        document.body.appendChild(spark);
+        setTimeout(() => spark.remove(), 1200);
+      }
+      setInterval(createSpark, 400);
+    </script>
+  </body>
+</html>
